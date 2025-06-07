@@ -15,7 +15,7 @@ export interface PlayerDto{
 })
 
 export class PlayerService {
-  private apiUrl = 'http://localhost:5001/api/players';
+  private apiUrl = 'https://localhost:44321/api/players';
 
   constructor(private http: HttpClient) { }
 
