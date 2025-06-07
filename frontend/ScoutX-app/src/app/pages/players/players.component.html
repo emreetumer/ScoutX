@@ -1,0 +1,14 @@
+<h2>Oyuncu Listesi</h2>
+
+<ul *ngIf="players.length > 0; else noPlayers">
+  <li *ngFor = "let player of players">
+    <strong>{{ player.firstName }} {{ player.lastName }}</strong><br />
+    Pozisyon: {{ player.position }}<br />
+    Değer: {{ player.marketValue | number }} €
+    <hr />
+  </li>
+</ul>
+
+<ng-template #noPlayers>
+  <p>Hiç oyuncu bulunamadı.</p>
+</ng-template>
