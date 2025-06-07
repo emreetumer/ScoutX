@@ -6,5 +6,6 @@ namespace ScoutX.Domain.Interfaces
     {
         Task AddAsync(Player player);
         Task<List<Player>> GetAllAsync();
+        Task<Player?> GetByIdAsync(Guid id);
     }
 }

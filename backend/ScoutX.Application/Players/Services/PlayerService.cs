@@ -44,5 +44,24 @@ namespace ScoutX.Application.Players.Services
 
             return result;
         }
+
+        public async Task<PlayerDto?> GetPlayerByIdAsync(Guid id)
+        {
+            var player = await _playerRepository.GetByIdAsync(id);
+
+            if(player == null)
+            {
+                return null;
+            }
+
+            return new PlayerDto
+            {
+                Id = player.Id,
+                FirstName = player.FirstName,
+                LastName = player.LastName,
+                Position = player.Position,
+                MarketValue = player.MarketValue,
+            };
+        }
     }
 }

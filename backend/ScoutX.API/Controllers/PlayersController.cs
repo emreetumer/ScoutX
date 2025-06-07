@@ -27,5 +27,17 @@ namespace ScoutX.API.Controllers
             var players = await _playerService.GetAllPlayersAsync();
             return Ok(players);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPlayerById(Guid id)
+        {
+            var player = await _playerService.GetPlayerByIdAsync(id);
+
+            if (player == null)
+            {
+                return NotFound();
+            }
+            return Ok(player);
+        }
     }
 }
