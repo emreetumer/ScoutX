@@ -62,6 +62,16 @@ namespace ScoutX.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             // Veritabaný baðlantýsý
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
@@ -90,6 +100,8 @@ namespace ScoutX.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowAll");
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
