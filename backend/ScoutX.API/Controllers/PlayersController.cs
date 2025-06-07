@@ -20,5 +20,12 @@ namespace ScoutX.API.Controllers
             await _playerService.AddPlayerAsync(dto);
             return Ok(new { message = "Oyuncu Başarıyla Eklendi" });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllPlayer()
+        {
+            var players = await _playerService.GetAllPlayersAsync();
+            return Ok(players);
+        }
     }
 }

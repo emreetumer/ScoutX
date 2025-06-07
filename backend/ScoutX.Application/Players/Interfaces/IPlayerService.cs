@@ -5,5 +5,6 @@ namespace ScoutX.Application.Players.Interfaces
     public interface IPlayerService
     {
         Task AddPlayerAsync(AddPlayerDto dto);
+        Task<List<PlayerDto>> GetAllPlayersAsync();
     }
 }

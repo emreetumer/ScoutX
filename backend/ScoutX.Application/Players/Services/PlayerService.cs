@@ -28,5 +28,21 @@ namespace ScoutX.Application.Players.Services
             };
             await _playerRepository.AddAsync(player);
         }
+
+        public async Task<List<PlayerDto>> GetAllPlayersAsync()
+        {
+            var players = await _playerRepository.GetAllAsync();
+            var result = players.Select(p => new PlayerDto
+            {
+                Id = p.Id,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Position = p.Position,
+                MarketValue = p.MarketValue,
+
+            }).ToList();
+
+            return result;
+        }
     }
 }
