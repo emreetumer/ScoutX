@@ -21,5 +21,9 @@ namespace ScoutX.Infrastructure.Repositories
         {
             return await _context.Players.ToListAsync();
         }
+        public async Task<Player?> GetByIdAsync(Guid id)
+        {
+           return await _context.Players.FirstOrDefaultAsync(p => p.Id == id);
+        }
     }
 }
